@@ -1,3 +1,64 @@
 :root{
-    ---primaryColor: rgb(213, 227, 227);
+    ---primaryColor: rgb(240, 238, 246);
+    ---secondaryColor: white;
+    ---color: black;
+    ---designColor: rgb(126, 126, 244);
+}
+
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+.lightmode{
+
+}
+
+.dark-mode{
+
+}
+
+main{
+    background-color: var(---primaryColor);
+}
+
+nav{
+    height: 90px;
+    background-color: var(---secondaryColor);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.nav-center{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    cursor: pointer;
+}
+
+.nav-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 55px;
+    width: 100px;
+    border: 3px solid var(---color);
+    border-radius: 5px;
+    gap: 5px;
+    color:var(---color);
+}
+
+.nav-header:hover{
+    background-color: var(---primaryColor);
+}
+
+.site-icon{
+    font-size: 45px;
+    color:var(---designColor);
 }
