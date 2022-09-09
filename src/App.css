@@ -38,7 +38,6 @@ nav{
     display: flex;
     align-items: center;
     gap: 30px;
-    cursor: pointer;
 }
 
 .nav-header{
@@ -61,4 +60,5 @@ nav{
 .site-icon{
     font-size: 45px;
     color:var(---designColor);
+    cursor: pointer;
 }

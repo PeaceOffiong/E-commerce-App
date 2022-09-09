@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { useGlobalContext } from '../context';
 
-const productsList = () => {
+const ProductsList = () => {
+  const { productList } = useGlobalContext();
   return (
-    <div>productsList</div>
+    <div className='products-center'>
+        {productList.map((each) => {
+          const { id, title, img, price } = each;
+          return <ul className="list" key={id}>
+            <li>each item</li>
+          </ul>;
+        })}
+    </div>
   )
 }
 
-export default productsList
+export default ProductsList
