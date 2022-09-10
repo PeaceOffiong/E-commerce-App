@@ -1,10 +1,10 @@
 import './App.css';
 import React from 'react';
 import Home from "./components/Home";
-import Product from "./components/product";
 import Cart from "./components/cart";
 import Error from "./components/Error";
 import { Route, Routes, Link, NavLink } from "react-router-dom";
+import Product from "./components/product";
 
 
 function App() {

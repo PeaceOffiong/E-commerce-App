@@ -1,5 +1,5 @@
 :root{
-    ---primaryColor: rgb(240, 238, 246);
+    ---primaryColor: rgb(231, 231, 232);
     ---secondaryColor: white;
     ---color: black;
     ---designColor: rgb(126, 126, 244);
@@ -61,4 +61,89 @@ nav{
     font-size: 45px;
     color:var(---designColor);
     cursor: pointer;
+}
+
+.title{
+    text-align: center;
+    font-size: 35px;
+    font-family: cursive;
+    padding: 15px;
+}
+
+.products-center{
+    padding: 15px;
+}
+
+ul{
+    display:flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+li{
+    height: 300px;
+    width: 550px;
+    flex: 1 20%;
+    background-color: var(---secondaryColor);
+    margin: 20px;  
+    border-radius: 20px;
+    box-shadow: 24px 15px 32px -9px rgba(156, 137, 137, 0.75);
+    -webkit-box-shadow: 24px 15px 32px -9px rgba(225, 205, 205, 0.75);
+    -moz-box-shadow: 24px 15px 32px -9px rgba(225, 205, 205, 0.75);
+    transition:ease-in 0.5s;
+    /* overflow: hidden; */
+    cursor: pointer;
+    position: relative;
+}
+
+.img-container{
+    display: flex;
+    align-items: center;
+    height: 75%;
+    justify-content: center;
+    margin: 10px;
+}
+
+.img{
+    height: 150px;
+    width: 150px;
+}
+
+li:hover{
+    box-shadow: 16px 44px 31px 8px rgba(156, 137, 137, 0.75);
+    -webkit-box-shadow: 16px 44px 31px 8px rgba(156, 137, 137, 0.75);
+    -moz-box-shadow: 16px 44px 31px 8px rgba(156, 137, 137, 0.75);
+}
+
+.desc{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.cart-center{
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    height: 28px;
+    width: 70px;
+    border: none;
+    background-color: var(---designColor);
+    border-bottom-left-radius: 18px;
+    border-top-left-radius: 18px;
+    transform: translateX(78px);
+    display: none;
+    cursor: pointer;
+}
+
+.cart-center.show{
+    display: block;
+    transform: translateX(0)
+}
+
+.icon{
+    font-size: 22px;
+    color: var(---secondaryColor);
 }
