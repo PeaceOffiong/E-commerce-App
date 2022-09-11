@@ -13,6 +13,11 @@
     list-style: none;
 }
 
+p{
+    font-style: italic;
+    font-weight: 500;
+}
+
 .lightmode{
 
 }
@@ -21,7 +26,7 @@
 
 }
 
-main{
+body{
     background-color: var(---primaryColor);
 }
 
@@ -68,6 +73,7 @@ nav{
     font-size: 35px;
     font-family: cursive;
     padding: 15px;
+    font-weight: 600;
 }
 
 .products-center{
@@ -108,6 +114,7 @@ li{
 .img{
     height: 150px;
     width: 150px;
+    transition: ease-out 0.72s;
 }
 
 li:hover{
@@ -140,10 +147,68 @@ li:hover{
 
 .cart-center.show{
     display: block;
-    transform: translateX(0)
+    transform: translateX(0);
+    transition: ease-out 0.72s;
 }
 
 .icon{
     font-size: 22px;
     color: var(---secondaryColor);
+}
+
+.itemAddedOnDisplay{
+    position: fixed;
+    inset: 0;
+    background-color: hsl(210, 2%, 16%, .4);
+    display: grid;
+    z-index: 20;
+    height: 100vh;
+    transition: .3s;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* body .itemAddedOnDisplay::-webkit-scrollbar-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    visibility: hidden;
+} */
+
+.center-point{
+    height: 80%;
+    width: 400px;
+    background-color: var(---secondaryColor);
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.display-img{
+    height: 200px;
+    width: 200px;
+}
+
+.center-point h3{
+    margin: 9px;
+}
+
+.center-point button{
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.center-point .orange{
+    border: 3px solid orange;
+    color: orange;
+}
+
+.center-point .blue{
+    border: 3px solid var(---designColor);
+    color: var(---designColor);
 }

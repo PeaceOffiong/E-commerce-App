@@ -6,8 +6,11 @@ const AppContext = React.createContext();
 const AppProvider = ({children}) => {
 
   const [productList, setProductList] = useState(storeProducts);
-  const [isMouseHover, setIsMouseOver] = useState(true);
-  const [isItemInCart , setIsItemInCart ] = useState(false)
+  const [isMouseOver, setIsMouseOver] = useState(false);
+  const [isItemInCart, setIsItemInCart] = useState(false);
+  const [isItemAddedDisplayed, setIsItemAddedDisplayed] = useState(false);
+  const [itemOnDisplay, setItemOnDisplay] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
 
   const mouseEnter = (e) => {
     e.preventDefault();
@@ -30,7 +33,16 @@ const AppProvider = ({children}) => {
 
   const displayCart = (id, e) => {
     e.preventDefault();
-    console.log("clicked");
+    setIsItemAddedDisplayed(true);
+    const specificItem = productList.find((each) => each.id === id )
+    setItemOnDisplay(specificItem);
+    setCartItems([...cartItems, specificItem])
+    setIsItemInCart(true);
+  }
+
+  const handleReturnToMainPage = (e) => {
+    e.preventDefault();
+    setIsItemAddedDisplayed(false);
   }
 
   return (
@@ -41,6 +53,10 @@ const AppProvider = ({children}) => {
         mouseLeave,
         displayCart,
         isItemInCart,
+        isItemAddedDisplayed,
+        itemOnDisplay,
+        cartItems,
+        handleReturnToMainPage,
       }}
     >
       {children}

@@ -1,11 +1,25 @@
 import React from 'react';
+import Navbar from "./navbar";
+import { useGlobalContext } from '../context';
 
-const cart = () => {
+const Cart = () => {
+  const { cartItems } = useGlobalContext();
+  if (cartItems.length <= 0) {
+    return (
+      <section>
+        <Navbar />
+        <div className="title">Your Cart is currently Empty</div>
+      </section>
+    );
+  }
   return (
-    <div>
-      cart
-    </div>
+    <section>
+      <Navbar />
+      <div className="title">Cart below</div>
+    </section>
   )
+  
+  
 }
 
-export default cart
+export default Cart

@@ -1,17 +1,25 @@
 import React from 'react';
 import { useGlobalContext } from '../context';
 import { BsCartPlusFill } from "react-icons/bs";
+import ItemonDisplay from './itemonDisplay';
 
 
 const ProductsList = () => {
-  const { productList, mouseEnter, mouseLeave, displayCart, isItemInCart } =
-    useGlobalContext();
+  const {
+    productList,
+    mouseEnter,
+    mouseLeave,
+    displayCart,
+    isItemInCart,
+    isItemAddedDisplayed,
+    itemOnDisplay,
+    handleReturnToMainPage,
+  } = useGlobalContext();
+
   return (
-    <div className='products-center'>
-      <h3 className='title'>Our Products</h3>
-      <ul
-        className='list'
-      >
+    <div className="products-center">
+      <h3 className="title">Our Products</h3>
+      <ul className="list">
         {productList.map((each) => {
           const { id, title, img, price } = each;
           return (
@@ -37,8 +45,14 @@ const ProductsList = () => {
           );
         })}
       </ul>
+      {isItemAddedDisplayed && (
+        <ItemonDisplay
+          itemOnDisplay={itemOnDisplay}
+          handleReturnToMainPage={handleReturnToMainPage}
+        />
+      )}
     </div>
-  )
+  );
 }
 
 export default ProductsList

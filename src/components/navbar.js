@@ -6,10 +6,10 @@ const navbar = () => {
   return (
     <nav>
       <div className="nav-center">
+        <FaPhoneSquareAlt className="site-icon" />
         <Link to="/">
-          <FaPhoneSquareAlt className="site-icon" />
+          <h2>Products</h2>
         </Link>
-        <h2>Products</h2>
       </div>
       <Link to="/cart">
         <div className="nav-header">
