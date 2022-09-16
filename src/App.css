@@ -18,12 +18,11 @@ p{
     font-weight: 500;
 }
 
-.lightmode{
-
-}
-
-.dark-mode{
-
+.error-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
 }
 
 body{
@@ -125,9 +124,11 @@ li:hover{
 
 .desc{
     display:flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    margin: 0 10px;
+    justify-content: center;
+    width: initial;
+    gap: 5px;
 }
 
 .cart-center{
@@ -140,19 +141,19 @@ li:hover{
     background-color: var(---designColor);
     border-bottom-left-radius: 18px;
     border-top-left-radius: 18px;
-    transform: translateX(78px);
+    transform: translateX(100%, 100%);
     display: none;
     cursor: pointer;
+    transition: all 1s linear;
 }
 
 .cart-center.show{
     display: block;
-    transform: translateX(0);
-    transition: ease-out 0.72s;
+    transform: translate(0, 0);
 }
 
 .icon{
-    font-size: 22px;
+    font-size: 15px;
     color: var(---secondaryColor);
 }
 
@@ -169,14 +170,9 @@ li:hover{
     align-items: center;
     justify-content: center;
 }
-/* body .itemAddedOnDisplay::-webkit-scrollbar-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    visibility: hidden;
-} */
 
 .center-point{
-    height: 80%;
+    height: auto;
     width: 400px;
     background-color: var(---secondaryColor);
     font-size: 15px;
@@ -203,12 +199,149 @@ li:hover{
     cursor: pointer;
 }
 
-.center-point .orange{
+.orange{
     border: 3px solid orange;
     color: orange;
 }
 
-.center-point .blue{
+.blue{
     border: 3px solid var(---designColor);
     color: var(---designColor);
+}
+
+.link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height:inherit;
+}
+
+.inner.center{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.img-center{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgg{
+    width: 60%;
+    height: 70%;
+}
+
+.info-center{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-section{
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    cursor: pointer;
+}
+
+.button-section button{
+    height: 50px;
+    width: 100px;
+    margin: 10px;
+}
+
+span{
+    max-width: 200px;
+}
+
+.carts{
+    margin: 200px;
+}
+
+@media screen and (min-width: 650px) {
+    li{
+        overflow: hidden;
+    }
+}
+
+table{
+   width: 100%;
+    border-collapse: collapse;
+}
+
+th{
+    text-transform: uppercase;
+    font-weight: 500px;
+    letter-spacing: 1px;
+}
+
+tbody td{
+    text-align: center ;
+}
+
+tr{
+    height: 40px;
+}
+
+.table-img{
+    height: 60px;
+    width: 60px;
+}
+
+.delete{
+    border: none;
+    font-size: 20px;
+    color: orange;
+    background-color: transparent;
+}
+
+.counter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 60px;
+}
+
+.quantitybtn{
+    width: 25px;
+    height:25px;
+    margin: 7px;
+}
+.totals{
+   display: flex;
+   flex-direction: column;
+    margin: 20px;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.clearBtn{
+    height: 30px;
+    width: 100px;
+    background-color: transparent;
+    border: 2px solid orange;
+    color: orange;
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+.clearBtn:hover{
+    background-color: orange;
+    color: white;
 }

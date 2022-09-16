@@ -1,49 +1,153 @@
-import React, { useContext, useState } from 'react';
-import {storeProducts, detailProduct} from "./data";
+import React, { useContext, useEffect, useState, useRef, Component} from 'react';
+import { storeProducts, detailProduct } from "./data";
 
 const AppContext = React.createContext();
 
-const AppProvider = ({children}) => {
+const products = () => {
+  let products = []
+  let product = storeProducts.forEach((each) => {
+    const singleItem = { ...each }
+    products =[...products, singleItem]
+      return products;
+    });
+    return products;
+  };
 
-  const [productList, setProductList] = useState(storeProducts);
+const AppProvider = ({ children }) => {
+        // use State for manipulating the data
+  const [productList, setProductList] = useState(products());
+        //useState to accertain movement of mouse
   const [isMouseOver, setIsMouseOver] = useState(false);
-  const [isItemInCart, setIsItemInCart] = useState(false);
+
   const [isItemAddedDisplayed, setIsItemAddedDisplayed] = useState(false);
   const [itemOnDisplay, setItemOnDisplay] = useState(null);
   const [cartItems, setCartItems] = useState([]);
+  const [message, setMessage] = useState("");
+  const [state, setState] = useState({
+    cartSubTotal: 0,
+    cartTax: 0,
+    cartTotal: 0,
+  });
+  
 
   const mouseEnter = (e) => {
     e.preventDefault();
-    e.currentTarget.firstElementChild.firstElementChild.style.height = "200px";
-    e.currentTarget.firstElementChild.firstElementChild.style.width = "200px";
+    e.currentTarget.firstElementChild.firstElementChild.firstElementChild.style.height =
+      "200px";
+    e.currentTarget.firstElementChild.firstElementChild.firstElementChild.style.width = "200px";
     setIsMouseOver(true);
-    const target = e.currentTarget.lastElementChild
+    const target = e.currentTarget.lastElementChild;
     target.classList.add("show");
-  }
+  };
 
   const mouseLeave = (e) => {
     e.preventDefault();
     setIsMouseOver(false);
     const target = e.currentTarget.lastElementChild;
     target.classList.remove("show");
-    e.currentTarget.firstElementChild.firstElementChild.style.width = "150px";
-    e.currentTarget.firstElementChild.firstElementChild.style.height = "150px";
+    e.currentTarget.firstElementChild.firstElementChild.firstElementChild.style.width =
+      "150px";
+    e.currentTarget.firstElementChild.firstElementChild.firstElementChild.style.height =
+      "150px";
     setIsMouseOver(true);
-  }
+  };
 
-  const displayCart = (id, e) => {
-    e.preventDefault();
-    setIsItemAddedDisplayed(true);
-    const specificItem = productList.find((each) => each.id === id )
-    setItemOnDisplay(specificItem);
-    setCartItems([...cartItems, specificItem])
-    setIsItemInCart(true);
-  }
+  const addToCart = (id) => {
+    let specificProduct = [...productList];
+    const index = specificProduct.indexOf(getItem(id));
+    const product = specificProduct[index];
+    product.inCart = true;
+    product.count = 1;
+    const price = product.price;
+    product.total = price;
+    setCartItems([...cartItems, product]);
+    setProductList(specificProduct);
+    addTotals();
+  };
+
+  const getItem = (id) => {
+    const specificItem = productList.find((each) => each.id === id);
+    return specificItem;
+  };
 
   const handleReturnToMainPage = (e) => {
     e.preventDefault();
     setIsItemAddedDisplayed(false);
+  };
+
+  const displayCart = (id, index) => {
+    const cartid = cartItems.map((each) => each.id === id)
+    if (cartid === "") {
+      setMessage("Already in Cart");
+      console.log(cartid)
+    
+    } else {
+      getItem(id);
+      setIsItemAddedDisplayed(true);
+      setItemOnDisplay(getItem(id));
+      addToCart(id);
+    }
+
   }
+
+  const addTotals = () => {
+    let subTotal = 0;
+    cartItems.map((item) => (subTotal += item.total));
+    const tempTax = subTotal * 0.1;
+    const tax = parseFloat(tempTax.toFixed(2));
+    const total = subTotal + tax;
+    setState(() => {
+      return {
+        cartSubTotal: subTotal,
+        cartTax: tax,
+        cartTotal: total,
+      };
+    });
+  };
+
+  const handleClearCart = () => {
+    setCartItems([]);
+    productList.map(each => each.inCart = false);
+ }
+
+  const handleDeleteItem = (id) => {
+    let tempProducts = [...productList];
+    let tempCart = [...cartItems];
+    tempCart = tempCart.filter(each => each.id !== id)
+    const index = tempProducts.indexOf(getItem(id));
+    let removedProduct = tempProducts[index];
+    removedProduct.inCart = false;
+    removedProduct.count = 0;
+    removedProduct.total = 0;
+     
+    setCartItems(tempCart);
+    setProductList(tempProducts);
+    addTotals();
+  }
+
+  const handleCounter = (e, id) => {
+    let tempCart = [...cartItems];
+    const specificItem = tempCart.find((item) => item.id === id);
+    const index = tempCart.indexOf(specificItem);
+    const product = tempCart[index];
+    if (e.target.innerText === "-") {
+      product.count = product.count - 1;
+      if (product.count === 0) {
+        handleDeleteItem(id)
+      } else {
+        product.total = product.count * product.price;
+        setCartItems(tempCart)
+        addTotals();
+      }
+    } else {
+      product.count = product.count + 1;
+      product.total = product.count * product.price;
+      setCartItems(tempCart);
+      addTotals();
+    }
+
+  };
+
 
   return (
     <AppContext.Provider
@@ -51,12 +155,18 @@ const AppProvider = ({children}) => {
         productList,
         mouseEnter,
         mouseLeave,
-        displayCart,
-        isItemInCart,
         isItemAddedDisplayed,
         itemOnDisplay,
         cartItems,
         handleReturnToMainPage,
+        displayCart,
+        setIsItemAddedDisplayed,
+        message,
+        addTotals,
+        state,
+        handleClearCart,
+        handleDeleteItem,
+        handleCounter
       }}
     >
       {children}
