@@ -17,7 +17,6 @@ const AppProvider = ({ children }) => {
         // use State for manipulating the data
   const [productList, setProductList] = useState(products());
         //useState to accertain movement of mouse
-  const [isMouseOver, setIsMouseOver] = useState(false);
 
   const [isItemAddedDisplayed, setIsItemAddedDisplayed] = useState(false);
   const [itemOnDisplay, setItemOnDisplay] = useState(null);
@@ -31,25 +30,13 @@ const AppProvider = ({ children }) => {
   
 
   const mouseEnter = (e) => {
-    e.preventDefault();
-    e.currentTarget.firstElementChild.firstElementChild.firstElementChild.style.height =
-      "200px";
-    e.currentTarget.firstElementChild.firstElementChild.firstElementChild.style.width = "200px";
-    setIsMouseOver(true);
     const target = e.currentTarget.lastElementChild;
     target.classList.add("show");
   };
 
   const mouseLeave = (e) => {
-    e.preventDefault();
-    setIsMouseOver(false);
     const target = e.currentTarget.lastElementChild;
     target.classList.remove("show");
-    e.currentTarget.firstElementChild.firstElementChild.firstElementChild.style.width =
-      "150px";
-    e.currentTarget.firstElementChild.firstElementChild.firstElementChild.style.height =
-      "150px";
-    setIsMouseOver(true);
   };
 
   const addToCart = (id) => {

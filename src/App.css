@@ -116,10 +116,16 @@ li{
     transition: ease-out 0.72s;
 }
 
+li a .img-container .img:hover{
+    height: 200px;
+    width: 200px;
+}
+
 li:hover{
     box-shadow: 16px 44px 31px 8px rgba(156, 137, 137, 0.75);
     -webkit-box-shadow: 16px 44px 31px 8px rgba(156, 137, 137, 0.75);
     -moz-box-shadow: 16px 44px 31px 8px rgba(156, 137, 137, 0.75);
+
 }
 
 .desc{
@@ -179,16 +185,11 @@ li:hover{
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
-}
-
-.display-img{
-    height: 200px;
-    width: 200px;
+    gap: 15px;
 }
 
 .center-point h3{
-    margin: 9px;
+    margin: 10px;
 }
 
 .center-point button{
@@ -344,4 +345,9 @@ tr{
 .clearBtn:hover{
     background-color: orange;
     color: white;
+}
+
+.display-img{
+    height: 220px;
+    width: 220px;
 }
