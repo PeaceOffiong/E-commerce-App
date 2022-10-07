@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React from "react";
 import Navbar from "../components/navbar";
-import { useGlobalContext } from '../context';
+import { useGlobalContext } from "../context";
 import { FaTrashAlt } from "react-icons/fa";
-import CartTotals from "../components/cartTotals"
+import CartTotals from "../components/cartTotals";
 
 const Cart = () => {
-  const { cartItems, handleCounter, handleDeleteItem } =
-    useGlobalContext();
+  const { cartItems, handleCounter, handleDeleteItem } = useGlobalContext();
   if (cartItems.length <= 0) {
     return (
       <section>
@@ -52,7 +52,7 @@ const Cart = () => {
                 <td>${price}</td>
                 <td className="counter">
                   <button
-                    onClick={(e) => handleCounter(e,id)}
+                    onClick={(e) => handleCounter(e, id)}
                     className="quantitybtn"
                   >
                     -
@@ -81,11 +81,9 @@ const Cart = () => {
           })}
         </tbody>
       </table>
-      <CartTotals/>
+      <CartTotals />
     </section>
   );
-  
-  
-}
+};
 
-export default Cart
+export default Cart;

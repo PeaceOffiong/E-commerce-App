@@ -1,16 +1,12 @@
-import React from 'react';
-import { useGlobalContext } from '../context';
+
+import React from "react";
+import { useGlobalContext } from "../context";
 import { Link } from "react-router-dom";
 import { BsCartPlusFill } from "react-icons/bs";
-import PropTypes from 'prop-types';
 
 const ProductsList = () => {
-  const {
-    productList,
-    mouseEnter,
-    mouseLeave,
-    displayCart,
-  } = useGlobalContext();
+  const { productList, mouseEnter, mouseLeave, displayCart } =
+    useGlobalContext();
 
   return (
     <div className="products-center">
@@ -40,7 +36,9 @@ const ProductsList = () => {
                 disabled={inCart ? true : false}
               >
                 {inCart ? (
-                  <small className="icon" disabled>In Cart</small>
+                  <small className="icon" disabled>
+                    In Cart
+                  </small>
                 ) : (
                   <BsCartPlusFill className="icon" />
                 )}
@@ -49,10 +47,9 @@ const ProductsList = () => {
           );
         })}
       </ul>
-
     </div>
   );
-}
+};
 
 // each.propTypes = {
 //   product: PropTypes.shape({
@@ -64,4 +61,4 @@ const ProductsList = () => {
 //   }).isRequired
 // }
 
-export default ProductsList
+export default ProductsList;

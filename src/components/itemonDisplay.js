@@ -1,11 +1,10 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React from "react";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from '../context';
+import { useGlobalContext } from "../context";
 
-
-const ItemonDisplay = ({ itemOnDisplay, handleReturnToMainPage}) => {
-  const { id, title, img, price } =
-    itemOnDisplay;
+const ItemonDisplay = ({ itemOnDisplay, handleReturnToMainPage }) => {
+  const { id, title, img, price } = itemOnDisplay;
   const { setIsItemAddedDisplayed } = useGlobalContext();
   return (
     <aside className="itemAddedOnDisplay">
@@ -18,7 +17,10 @@ const ItemonDisplay = ({ itemOnDisplay, handleReturnToMainPage}) => {
           Continue Shopping
         </button>
         <Link to="/cart">
-          <button className="orange" onClick={() => setIsItemAddedDisplayed(false)}>
+          <button
+            className="orange"
+            onClick={() => setIsItemAddedDisplayed(false)}
+          >
             Go to Cart
           </button>
         </Link>
@@ -27,4 +29,4 @@ const ItemonDisplay = ({ itemOnDisplay, handleReturnToMainPage}) => {
   );
 };
 
-export default ItemonDisplay
+export default ItemonDisplay;

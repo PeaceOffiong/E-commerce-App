@@ -1,15 +1,14 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { useGlobalContext } from '../context';
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import { useGlobalContext } from "../context";
 
 const Product = () => {
   const { id } = useParams();
   const productId = parseInt(id);
-  const { productList, displayCart, message } =
-    useGlobalContext();
+  const { productList, displayCart, message } = useGlobalContext();
   const Item = productList.find((each) => each.id === productId);
-  const {title, price, company, info, inCart, count, total, img } =
-    Item;
+  const { title, price, company, info, inCart, count, total, img } = Item;
   return (
     <section className="product-center">
       <h2 className="title">{title}</h2>
@@ -42,6 +41,6 @@ const Product = () => {
       </div>
     </section>
   );
-}
+};
 
-export default Product
+export default Product;
